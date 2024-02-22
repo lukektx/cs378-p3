@@ -1,0 +1,92 @@
+/* 
+  Style your elements by creating CSS classes here.
+  Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
+*/
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.menuImage {
+  float: left;
+  width: 20vw;
+  height: 20vw;
+  object-fit: cover;
+  border-radius: 2vw;
+}
+
+.slogan {
+  background: linear-gradient(to right, #64a71a 50%, #f7931e 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-size: 20px;
+}
+
+.menuEntry {
+  margin: 10px;
+  padding: 10px;
+}
+
+.menuTitle {
+  font-weight: bold;
+  font-size: 15px;
+  text-align: left;
+}
+
+.description {
+  font-size: 12px;
+  text-align: left;
+}
+
+.price {
+  text-align: left;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.addButton {
+  float: right;
+  border-radius: 25px;
+  border: 0px;
+  background-color: rgb(255, 128, 128);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.mainTitle {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.titleColor {
+  background: linear-gradient(to right, #ffffff 40%, #ff0000 50%, #ffffff 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-size: 20px;
+}
+
+.titleDescription {
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  font-size: 30px;
+}
+
+.titleSlogan {
+  font-size: 40px;
+  color: white;
+}
+
+.titleBackground {
+  background-color: rgb(84, 84, 84);
+
+}
+
+.addButton:active {
+  box-shadow: none;
+}
