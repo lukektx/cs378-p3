@@ -5,11 +5,11 @@ import React from 'react';
 // Modify the component to take in all the other properties of a menu item you need and display them in the component.
 // Use bootstrap to style the elements so that it looks like the mockup in the assignment.
 // Hint: You can use the image name to get the image from the images folder.
-const MenuItem = ({ title, description, imageName, price }) => {
+const MenuItem = ({ title, description, imageName, price, quantity, update }) => {
     return (
         <div className='row menuEntry'>
             <div className="col-4 menu-image">
-                <img className='menuImage' src={`./images/${imageName}`} alt={`${title}`}/>
+                <img className='menuImage' src={require(`/public/images/${imageName}`)} alt={`${title}`}/>
             </div>
             <div className='col-8'>
                 <h2 className='menuTitle'>{title}</h2>
@@ -17,7 +17,9 @@ const MenuItem = ({ title, description, imageName, price }) => {
                 <div className="row justify-content-between">
                     <p className='col-2 price'>{price}</p>
                     <div className='col-1'>
-                        <button className='addButton'>Add</button>
+                        <button className='plus' onClick={() => update(1)}>+</button>
+                        <>{quantity}</>
+                        <button className='minus' onClick={() => update(-1)}>-</button>
                     </div>
                 </div>
             </div>

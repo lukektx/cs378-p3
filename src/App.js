@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import './App.css';
 import MenuItem from './components/MenuItem';
 import Title from './components/Title';
+import Cart from './components/Cart';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
@@ -81,6 +83,34 @@ const menuItems = [
 
 
 function App() {
+
+  const [orders, setOrders] = useState(Array(menuItems.length).fill(0));
+  const [subtotal, setSubtotal] = useState(0);
+
+  const updateSubtotal = (newOrders) => {
+    let total = 0;
+    for(let i = 0; i < newOrders.length; i++){
+      total += newOrders[i] * menuItems[i].price;
+    }
+    setSubtotal(total);
+  }
+
+  const updateOrders = (index, change) => {
+    let newOrders = [...orders]
+    if(newOrders[index] + change < 0){
+      return;
+    }
+    newOrders[index] += change
+    setOrders(newOrders);
+    updateSubtotal(newOrders);
+  }
+
+  const resetOrder = () => {
+    const newOrders = Array(menuItems.length).fill(0);
+    setOrders(newOrders);
+    updateSubtotal(newOrders);
+  }
+
   return (
     <div>
       <Title  title='Sakura Restauraunt'
@@ -94,9 +124,17 @@ function App() {
                       description={e.description}
                       imageName={e.imageName}
                       price={e.price}
-                      key={e.id}/>
+                      key={e.id}
+                      quantity={orders[e.id - 1]}
+                      update={(change) => updateOrders(e.id - 1, change)}
+                      />
           )})}
       </div>
+      <Cart
+        subtotal={subtotal}
+        orderItems={() => {}}
+        resetOrder={resetOrder}
+      />
     </div>
   );
 }

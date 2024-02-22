@@ -4,7 +4,7 @@ const Title = ({title, logo, description, slogan}) => {
             <h1>{title}</h1>
             <div className='row'>
                 <div className='col-4'>
-                    <img className='img-fluid' src={`./images/${logo}`} alt='logo'/>
+                    <img className='img-fluid' src={require(`/public/images/${logo}`)} alt='logo'/>
                 </div>
                 <div className='col-8 titleBackground'>
                     <p className="titleDescription titleColor">{description}</p>
