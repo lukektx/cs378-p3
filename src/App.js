@@ -3,6 +3,7 @@ import './App.css';
 import MenuItem from './components/MenuItem';
 import Title from './components/Title';
 import Cart from './components/Cart';
+import OrderPopup from './components/OrderPopup';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
@@ -86,6 +87,7 @@ function App() {
 
   const [orders, setOrders] = useState(Array(menuItems.length).fill(0));
   const [subtotal, setSubtotal] = useState(0);
+  const [showOrderPopup, setshowOrderPopup] = useState(false);
 
   const updateSubtotal = (newOrders) => {
     let total = 0;
@@ -111,6 +113,19 @@ function App() {
     updateSubtotal(newOrders);
   }
 
+  const getOrderText = () => {
+    if(orders.reduce((partialSum, a) => partialSum + a, 0) === 0){
+      return 'No items in cart!'
+    }
+    let outStr = 'Order Placed: ';
+    for(let i = 0; i < orders.length; i++){
+      if(orders[i] > 0){
+        outStr += `${String(orders[i])} ${menuItems[i].title} `;
+      }
+    }
+    return outStr;
+  }
+
   return (
     <div>
       <Title title='Sakura Restauraunt'
@@ -131,13 +146,15 @@ function App() {
           )
         })}
       </div>
+      <OrderPopup showOrderPopup={showOrderPopup}
+                  closeOrderPopup={() => {setshowOrderPopup(false); resetOrder();}}
+                  orders={getOrderText()}
+      />
       <Cart
         subtotal={subtotal}
-        orderItems={showOrderPopup}
+        orderItems={() => {setshowOrderPopup(true)}}
         resetOrder={resetOrder}
       />
-      {showPopup && <p className='popup'>Order</p>}
-
     </div>
   );
 }

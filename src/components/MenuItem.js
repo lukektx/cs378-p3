@@ -18,7 +18,7 @@ const MenuItem = ({ title, description, imageName, price, quantity, update }) =>
                     <p className='col-2 price'>{price}</p>
                     <div className='col-2'>
                         <button className='minus' onClick={() => update(-1)}>-</button>
-                        <>{quantity}</>
+                        <p className='quantity'>{quantity}</p>
                         <button className='plus' onClick={() => update(1)}>+</button>
                     </div>
                 </div>
