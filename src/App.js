@@ -89,7 +89,7 @@ function App() {
 
   const updateSubtotal = (newOrders) => {
     let total = 0;
-    for(let i = 0; i < newOrders.length; i++){
+    for (let i = 0; i < newOrders.length; i++) {
       total += newOrders[i] * menuItems[i].price;
     }
     setSubtotal(total);
@@ -97,7 +97,7 @@ function App() {
 
   const updateOrders = (index, change) => {
     let newOrders = [...orders]
-    if(newOrders[index] + change < 0){
+    if (newOrders[index] + change < 0) {
       return;
     }
     newOrders[index] += change
@@ -113,28 +113,31 @@ function App() {
 
   return (
     <div>
-      <Title  title='Sakura Restauraunt'
-              logo='logo.jpg'
-              description='Fresh and authentic Japanese cuisine'
-              slogan='Amazing views and even better food'/>
+      <Title title='Sakura Restauraunt'
+        logo='logo.jpg'
+        description='Fresh and authentic Japanese cuisine'
+        slogan='Amazing views and even better food' />
       <div className="menu">
         {menuItems.map((e) => {
-          return(
+          return (
             <MenuItem title={e.title}
-                      description={e.description}
-                      imageName={e.imageName}
-                      price={e.price}
-                      key={e.id}
-                      quantity={orders[e.id - 1]}
-                      update={(change) => updateOrders(e.id - 1, change)}
-                      />
-          )})}
+              description={e.description}
+              imageName={e.imageName}
+              price={e.price}
+              key={e.id}
+              quantity={orders[e.id - 1]}
+              update={(change) => updateOrders(e.id - 1, change)}
+            />
+          )
+        })}
       </div>
       <Cart
         subtotal={subtotal}
-        orderItems={() => {}}
+        orderItems={showOrderPopup}
         resetOrder={resetOrder}
       />
+      {showPopup && <p className='popup'>Order</p>}
+
     </div>
   );
 }

@@ -9,17 +9,17 @@ const MenuItem = ({ title, description, imageName, price, quantity, update }) =>
     return (
         <div className='row menuEntry'>
             <div className="col-4 menu-image">
-                <img className='menuImage' src={require(`/public/images/${imageName}`)} alt={`${title}`}/>
+                <img className='menuImage' src={require(`/public/images/${imageName}`)} alt={`${title}`} />
             </div>
             <div className='col-8'>
                 <h2 className='menuTitle'>{title}</h2>
                 <p className='description'>{description}</p>
                 <div className="row justify-content-between">
                     <p className='col-2 price'>{price}</p>
-                    <div className='col-1'>
-                        <button className='plus' onClick={() => update(1)}>+</button>
-                        <>{quantity}</>
+                    <div className='col-2'>
                         <button className='minus' onClick={() => update(-1)}>-</button>
+                        <>{quantity}</>
+                        <button className='plus' onClick={() => update(1)}>+</button>
                     </div>
                 </div>
             </div>
