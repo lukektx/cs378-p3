@@ -147,7 +147,7 @@ function App() {
         })}
       </div>
       <OrderPopup showOrderPopup={showOrderPopup}
-                  closeOrderPopup={() => {setshowOrderPopup(false); resetOrder();}}
+                  closeOrderPopup={() => setshowOrderPopup(false)}
                   orders={getOrderText()}
       />
       <Cart
